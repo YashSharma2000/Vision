@@ -1,0 +1,385 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    position: relative;
+}
+/*utility classes*/
+.container{
+    border-radius: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left : 2px solid  white;
+    border-top: 2px solid  white;;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    transform: perspective(1000px);
+    transition: transform 30ms;
+}
+
+
+/*home header styling*/
+.home-header{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(30deg, rgb(0, 191, 255), rgb(0, 255, 149));
+    position: fixed;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* home header button styling */
+/*buttons scale transition*/
+.explore-btn button{
+    padding: 1rem;
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(243, 104, 229);
+    box-shadow: 0 0 15px rgb(243, 104, 229);
+    font-size: 0.9rem;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    scale:1;
+    transition: scale 1s;
+}
+.explore-btn button:hover{
+    scale: 1.2;
+}
+/*buttons border transition*/
+.explore-btn button::before{
+    content:"";
+    position: absolute;
+    top: 0;
+    bottom:3rem;          
+    right:10rem;
+    left: 0;
+    border-top:3px solid rgb(243, 104, 229);
+    border-left:3px solid rgb(243, 104, 229);
+    transition: all 1s;
+}
+.explore-btn button::after{
+    content:"";
+    position: absolute;
+    top: 2.9rem;
+    bottom:0;
+    right:0;
+    left: 7.4rem;
+    border-bottom:3px solid rgb(243, 104, 229);
+    border-right:3px solid rgb(243, 104, 229);
+    transition: all 1s;
+}
+.explore-btn button:hover::before{
+    display: block;
+    border-top:3px solid white;
+    border-left:3px solid white;
+    bottom:1rem;          
+    right:3rem;
+}
+.explore-btn button:hover::after{
+    display: block;
+    border-bottom:3px solid white;
+    border-right:3px solid white;
+    top: 1rem;         
+    left: 3rem;
+}
+/*back button styling*/
+.back-btn{
+    padding: 1rem;
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(243, 104, 229);
+    box-shadow: 0 0 15px rgb(243, 104, 229);
+    font-size: 0.9rem;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    scale:1;
+    transition: scale 1s;
+}
+.back-btn:hover{
+    scale: 1.2;
+}
+.back-btn a{
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    z-index: 10;
+}
+/*back button border styling*/
+.back-btn::before{
+    content:"";
+    position: absolute;
+    top: 0;
+    bottom:3rem;          
+    right:10rem;
+    left: 0;
+    border-top:3px solid rgb(243, 104, 229);
+    border-left:3px solid rgb(243, 104, 229);
+    transition: all 1s;
+}
+.back-btn::after{
+    content:"";
+    position: absolute;
+    top: 2.9rem;
+    bottom:0;
+    right:0;
+    left: 7.4rem;
+    border-bottom:3px solid rgb(243, 104, 229);
+    border-right:3px solid rgb(243, 104, 229);
+    transition: all 1s;
+}
+.back-btn:hover::before{
+    display: block;
+    border-top:3px solid white;
+    border-left:3px solid white;
+    bottom:1rem;          
+    right:3rem;
+}
+.back-btn:hover::after{
+    display: block;
+    border-bottom:3px solid white;
+    border-right:3px solid white;
+    top: 1rem;         
+    left: 3rem;
+}
+.header-content{
+    position: relative;
+    width: 40rem;
+    height: 40rem;
+    padding: 2rem;
+}
+.header-img{
+    position: absolute;
+    top: 5rem;
+    width: 40rem;
+    border-radius: 4rem;
+    overflow: hidden;
+}
+.header-img img{
+    width: 100%;
+}
+.header-content h3{
+    position: absolute;
+    top: 23rem;
+    font-size: 2rem;
+    color: white;
+}
+.header-content p{
+    position: absolute;
+    top: 27rem;
+    padding: 0 3rem;
+    color: white;
+}
+.buttons{
+    display: flex;
+    position: absolute;
+    bottom: 3rem;
+}
+
+
+/*About us introduction on Homepage styling*/
+.about_container{                     /* importance of this container is to add the scroll bar  */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -10;   
+    /* border: 5px solid rgb(206, 35, 35); */
+}
+.services_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    color: white;
+}
+.services_container h2{
+    position: absolute;
+    top: 4rem;
+    font-size: 2rem;
+    margin: 0, auto;
+}
+.services{
+    position: absolute;
+    top: 6rem;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+.service{
+    width: 16rem;
+    height: 30rem;
+    padding: 1rem;
+    position: relative;
+    padding: 2rem;
+}
+
+.service h3{
+    position: absolute;
+    top: 2rem;
+    margin: 0, auto;
+}
+.service img{
+    position: absolute;
+    top: 5rem;
+    width: 10rem;
+    height: 10rem;
+    margin: 0, auto;
+}
+.service p{
+    position: absolute;
+    top: 15rem;
+    text-align: center;
+    margin: 0, auto;
+    font-size: 1.1rem;
+    padding: 1.5rem;
+}
+/*back to header button styling */
+.back_to_header{
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    /* border: 1px solid black; */
+}
+.back_to_header button{
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    color: white;
+    cursor: pointer;
+}
+.layer_1{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(45deg, rgb(200, 94, 235), rgb(62, 109, 212));
+    display: flex;
+    z-index: -1;
+    justify-content: center;
+}
+
+.layer_2{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(45deg, rgb(242, 80, 80), rgb(255, 128, 170), rgb(246, 86, 214));
+    display: flex;
+    z-index: -2;
+    justify-content: center;
+}
+.layer_3{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(45deg, rgb(21, 86, 118), rgb(75, 209, 136));
+    display: flex;
+    z-index: -3;
+    justify-content: center;
+}
+
+
+.client_project_container{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 5rem;
+    height: 40rem;
+    width: 90vw;
+    color: white;
+    /* border: 1px solid black; */
+}
+.clients{
+    width: 60rem;
+}
+.projects{
+    width: 30rem;
+}
+.clients h2{
+    font-size: 2rem;
+}
+.client_container{
+    position: relative;
+    width: 45rem;
+    height: 30rem;
+    /* border: 1px solid black; */
+}
+.client{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5rem;
+    height: 5rem;
+}
+.client img{
+    width: 5rem;
+    height: 5rem;
+}
+
+.projects h2{
+    position: relative;
+    top: -6rem;
+    font-size: 2rem;
+}
+.project{
+    font-size: 1.3rem;
+    line-height: 2rem;
+}
+.projects ul{
+    position: relative;
+    top: -4.5rem;
+}
+
+
+.faq{
+    color: white;
+}
+
+
+/* grid css
+.grid-element-parent{
+    width: 0.5rem;
+    height: 0.5rem;
+    position: absolute;
+    z-index: -100;
+}
+.grid-element{
+    width: 0.5rem;
+    height: 0.5rem;
+    background: transparent;
+    position: relative;
+}
+hover effect using opacity property on gradients 
+.grid-element::before{
+    content: " ";
+    position: absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    background: rgb(255, 175, 247);
+    filter:drop-shadow(0px 0px 10px rgb(253, 0, 223));
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s;
+}
+.grid-element:hover::before{
+    opacity:1;
+    transition: 0s;
+} */
