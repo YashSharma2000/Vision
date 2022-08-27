@@ -125,9 +125,22 @@ setInterval(function(){
 }, 5000);
 
 
-
-
-
+//faq button show/hide javascript
+let show = document.querySelectorAll(".add");
+let hide = document.querySelectorAll(".remove");
+let ans = document.querySelectorAll(".answer");
+for(let i=0; i<show.length; i++){
+    show[i].addEventListener('click', ()=>{
+        show[i].style.display = "none";
+        hide[i].style.display = "flex";
+        ans[i].style.display = "block";
+    });
+    hide[i].addEventListener('click', ()=>{
+        show[i].style.display = "flex";
+        hide[i].style.display = "none";
+        ans[i].style.display = "none";
+    });   
+}
 
 
 //This method does not work because transition do not work on gradients yet so as an alternative use opacity property for transition in css using before pseudo selector

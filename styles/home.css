@@ -249,15 +249,22 @@ body{
 .back_to_header{
     position: fixed;
     top: 1rem;
-    left: 1rem;
-    /* border: 1px solid black; */
+    left: 2rem;
+    border-radius: 4rem;
+    overflow: hidden;
+    border: 1px solid white;
 }
 .back_to_header button{
-    background: transparent;
     border: none;
     font-size: 1.3rem;
     color: white;
     cursor: pointer;
+    padding: 1rem;
+    background: transparent;
+    transition: opacity 2s;
+}
+.back_to_header button:hover{
+
 }
 .layer_1{
     position: fixed;
@@ -347,10 +354,60 @@ body{
 }
 
 
-.faq{
+.faq_container{
+    position: relative;
+    top: 2rem;
+    width: 80rem;
+    height: 45rem;
     color: white;
 }
-
+.faq_container h2{
+    position: absolute;
+    top: 2rem;
+    margin: 0 auto;
+}
+.faqs{
+    position: absolute;
+    top: 5rem;
+    width: 70rem;
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid white; */
+}
+.faq{
+    width: 90%;
+    display: flex;
+    margin: 1rem auto;
+    /* border: 1px solid white; */
+}
+.QnA{
+    width: 60rem;
+    background: linear-gradient(90deg, rgb(99, 98, 98), rgb(161, 161, 161));
+    padding: 1rem;
+    /* border: 1px solid white; */
+}
+.add{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.8rem;
+    background: rgb(52, 52, 52);
+    /* border: 1px solid black; */
+}
+.remove{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 2.8rem;
+    background: rgb(52, 52, 52);
+    /* border: 1px solid black; */
+}
+.answer{
+    display: none;
+    margin: 1rem 0;
+    background: rgb(62, 62, 62);
+    padding: 1.4rem;
+}
 
 /* grid css
 .grid-element-parent{
