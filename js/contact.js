@@ -1,14 +1,11 @@
 let grid_container = document.querySelector('.grid_container');
+let contact_form_container = document.querySelector('.contact_form_container');
 generateGrid();
-window.addEventListener('resize', () => {
-    //on resizing window re-calculate the grids
-    generateGrid();
-});
 
 function generateGrid(){
     //generating hexagonal grid
-    let m = Math.floor(grid_container.clientWidth / 128);
-    let n = Math.floor(grid_container.clientHeight / 68);
+    let m = Math.floor(window.innerHeight / 52);
+    let n = Math.floor(window.innerWidth / 128);
     for (let i = 0; i < m; i++) {
         let temp = document.createElement('div');
         temp.style.position = "relative";
@@ -34,7 +31,6 @@ function generateGrid(){
 
 //moving light with cursor
 let light = document.querySelector('.gradient_light');
-console.log(light);
 grid_container.addEventListener('mousemove', (event) => {
     light.style.left = `${event.clientX - light.clientWidth / 2}px`;
     light.style.top = `${event.clientY - light.clientHeight / 2}px`;
