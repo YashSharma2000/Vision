@@ -263,9 +263,7 @@ body{
     background: transparent;
     transition: opacity 2s;
 }
-.back_to_header button:hover{
 
-}
 .layer_1{
     position: fixed;
     top: 0;
@@ -284,7 +282,7 @@ body{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(45deg, rgb(242, 80, 80), rgb(255, 128, 170), rgb(246, 86, 214));
+    background: linear-gradient(rgb(110, 121, 241), rgb(249, 162, 249));
     display: flex;
     z-index: -2;
     justify-content: center;
@@ -304,28 +302,33 @@ body{
 
 .client_project_container{
     display: flex;
-    justify-content: space-between;
     position: relative;
     top: 5rem;
-    height: 40rem;
-    width: 90vw;
+    width: 75vw;
+    height: 30rem;
     color: white;
-    /* border: 1px solid black; */
+    border: 1px solid white;
+    border-radius: 4rem;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.1);
 }
+
 .clients{
-    width: 60rem;
+    width: 50%;
 }
 .projects{
-    width: 30rem;
+    width: 50%;
+    /* display: none; */
 }
 .clients h2{
+    text-align: center;
     font-size: 2rem;
 }
 .client_container{
     position: relative;
-    width: 45rem;
-    height: 30rem;
-    /* border: 1px solid black; */
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid grey; */
 }
 .client{
     position: absolute;
@@ -340,25 +343,31 @@ body{
 }
 
 .projects h2{
-    position: relative;
-    top: -6rem;
     font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.projects ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .project{
+    list-style: none;
     font-size: 1.3rem;
     line-height: 2rem;
 }
-.projects ul{
-    position: relative;
-    top: -4.5rem;
-}
+
+
+
 
 
 .faq_container{
     position: relative;
     top: 2rem;
-    width: 80rem;
-    height: 45rem;
+    width: 70rem;
+    height: 35rem;
     color: white;
 }
 .faq_container h2{
@@ -391,7 +400,7 @@ body{
     justify-content: center;
     align-items: center;
     width: 2.8rem;
-    background: rgb(52, 52, 52);
+    background: rgb(161, 161, 161);
     /* border: 1px solid black; */
 }
 .remove{
@@ -399,7 +408,7 @@ body{
     justify-content: center;
     align-items: center;
     width: 2.8rem;
-    background: rgb(52, 52, 52);
+    background: rgb(161, 161, 161);
     /* border: 1px solid black; */
 }
 .answer{
