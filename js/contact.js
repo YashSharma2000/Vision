@@ -1,42 +1,76 @@
-let grid_container = document.querySelector('.grid_container');
-let contact_form_container = document.querySelector('.contact_form_container');
-generateGrid();
+let canvas = document.querySelector('.canvas');
+let ctx = canvas.getContext('2d');
+let container = document.querySelector('.container');
+let hue = 0;
 
-function generateGrid(){
-    //generating hexagonal grid
-    let m = Math.floor(window.innerHeight / 52);
-    let n = Math.floor(window.innerWidth / 128);
-    for (let i = 0; i < m; i++) {
-        let temp = document.createElement('div');
-        temp.style.position = "relative";
-        for (let j = 0; j < n; j++) {
-            let hexagon = document.createElement('span');
-            hexagon.classList.add("hexagon");
-            //update left 
-            if (i % 2 == 0) {
-                hexagon.style.left = `${200 * j - 96}px`;
-            }
-            else {
-                hexagon.style.left = `${(200 * j + 4)}px`;
-            }
-            //push all hexagon inside a row
-            temp.appendChild(hexagon);
+//setting the size of canvas to window inner dimensions
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+});
+
+let mouse = {
+    x: undefined,
+    y: undefined
+};
+
+//implementing own particle class
+class Particle {
+    constructor() {
+        //properties
+        this.x = mouse.x;
+        this.y = mouse.y;
+        this.size = Math.random() * 8;        //[0, 8)
+        this.speedX = Math.random() * 2 - 1;    //[-1, 1)
+        this.speedY = Math.random() * 2 - 1;    //[-1, 1)
+        this.color = `hsl(${hue}, 100%, 50%)`;   //color cycle
+    }
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.size >= 0.2) {
+            this.size -= 0.1;
         }
-        //update top
-        temp.style.top = `${67 * i}px`;
-        //push a row inside grid_container
-        grid_container.appendChild(temp);
+    }
+    draw() {
+        ctx.beginPath();
+        ctx.fillStyle = this.color;
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+};
+
+let particlesArray = [];
+container.addEventListener('mousemove', createParticles);
+
+//creating particles array everytime mouse is down and moved over the canvas
+function createParticles(event) {
+    mouse.x = event.x;
+    mouse.y = event.y;
+    for (let i = 0; i < 10; i++) {
+        particlesArray.push(new Particle());
+        hue++;
     }
 }
 
-//moving light with cursor
-let light = document.querySelector('.gradient_light');
-grid_container.addEventListener('mousemove', (event) => {
-    light.style.left = `${event.clientX - light.clientWidth / 2}px`;
-    light.style.top = `${event.clientY - light.clientHeight / 2}px`;
-    light.style.opacity = 1;
-    light.style.transition = "opacity 0.5s ease";
-});
-grid_container.addEventListener('mouseleave', () => {
-    light.style.opacity = 0;
-});
+//iterating over particles array
+function displayParticles() {
+    for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+        if(particlesArray[i].size <= 0.5){
+            particlesArray.splice(i, 1);
+            i--;
+        }
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    displayParticles();
+    requestAnimationFrame(animate);
+}
+animate();
