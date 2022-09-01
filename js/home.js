@@ -28,7 +28,7 @@ let about_container = document.querySelector(".about_container");
 explore_btn.addEventListener('click', (event) => {
     homepage_header.style.left = "-100vw";
     homepage_header.style.transition = "left 1s";
-    about_container.style.height = `${3*(window.innerWidth)+window.innerHeight}px`;
+    about_container.style.height = `${3 * (window.innerWidth) + window.innerHeight}px`;
 });
 //back to header button javascript
 about_container.children[0].addEventListener('click', (event) => {
@@ -75,19 +75,20 @@ container.forEach(function (x) {
 let layer_1 = document.querySelector('.layer_1');
 let layer_2 = document.querySelector('.layer_2');
 let layer_3 = document.querySelector('.layer_3');
-let one_third_scroll = (3*(window.innerWidth))/3;
+let one_third_scroll = (3 * (window.innerWidth)) / 3;
+
 //wheel scroll effect 
 window.addEventListener("scroll", (event) => {
     let scrollAmt = parseInt(window.pageYOffset);
     //for 1st 1 third part of scroll bar move the layer 1
-    if(scrollAmt <= one_third_scroll){
+    if (scrollAmt <= one_third_scroll) {
         layer_1.style.left = `-${scrollAmt}px`;
     }
-    else if(scrollAmt > one_third_scroll && scrollAmt<=(2*one_third_scroll)){
-        layer_2.style.left = `${scrollAmt-one_third_scroll}px`;
+    else if (scrollAmt > one_third_scroll && scrollAmt <= (2 * one_third_scroll)) {
+        layer_2.style.left = `${scrollAmt - one_third_scroll}px`;
     }
-    else if(scrollAmt > (2*one_third_scroll) && scrollAmt<=(3*one_third_scroll)){
-        layer_3.style.left = `-${scrollAmt-(2*one_third_scroll)}px`;
+    else if (scrollAmt > (2 * one_third_scroll) && scrollAmt <= (3 * one_third_scroll)) {
+        layer_3.style.left = `-${scrollAmt - (2 * one_third_scroll)}px`;
     }
 });
 
@@ -98,17 +99,17 @@ let client_container = document.querySelector('.client_container');
 let prev_pos_x;
 let prev_pos_y;
 
-function findNewCoordinates(element){
+function findNewCoordinates(element) {
     let min_x = client_container.offsetLeft;
     let max_x = client_container.offsetLeft + client_container.clientWidth - element.clientWidth;
     let min_y = client_container.offsetTop;
     let max_y = client_container.offsetTop + client_container.clientHeight - element.clientHeight;
-    let new_x = Math.floor((Math.random()*(max_x - min_x)));
-    let new_y = Math.floor((Math.random()*(max_y - min_y)));
+    let new_x = Math.floor((Math.random() * (max_x - min_x)));
+    let new_y = Math.floor((Math.random() * (max_y - min_y)));
     return [new_x, new_y];
 };
 
-function animateClient(element_id){
+function animateClient(element_id) {
     let element = document.getElementById(element_id);
     let new_pos = findNewCoordinates(element);
     element.style.transform = `translate(${new_pos[0]}px, ${new_pos[1]}px)`
@@ -117,9 +118,9 @@ function animateClient(element_id){
     prev_pos_y = new_pos[1];
 }
 
-setInterval(function(){
+setInterval(function () {
     let n = client_container.childElementCount;
-    for(let i=0; i<n; i++){
+    for (let i = 0; i < n; i++) {
         animateClient(client_container.children[i].getAttribute("id"));
     }
 }, 5000);
@@ -129,27 +130,16 @@ setInterval(function(){
 let show = document.querySelectorAll(".add");
 let hide = document.querySelectorAll(".remove");
 let ans = document.querySelectorAll(".answer");
-for(let i=0; i<show.length; i++){
-    show[i].addEventListener('click', ()=>{
+for (let i = 0; i < show.length; i++) {
+    show[i].addEventListener('click', () => {
         show[i].style.display = "none";
         hide[i].style.display = "flex";
         ans[i].style.display = "block";
     });
-    hide[i].addEventListener('click', ()=>{
+    hide[i].addEventListener('click', () => {
         show[i].style.display = "flex";
         hide[i].style.display = "none";
         ans[i].style.display = "none";
-    });   
+    });
 }
 
-
-//This method does not work because transition do not work on gradients yet so as an alternative use opacity property for transition in css using before pseudo selector
-// grid_element.forEach((x)=>{
-//     x.onmouseover = (event)=>{
-//         x.style.background = "rgb(233, 77, 233)";
-//     };
-//     x.onmouseout = (event)=>{
-//         x.style.background = "linear-gradient(45deg, grey, black)";
-//         x.style.transition = "background 2s";
-//     };
-// });
